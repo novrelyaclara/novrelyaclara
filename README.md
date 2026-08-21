@@ -19,6 +19,7 @@
   <a href="#"><img src="https://img.shields.io/badge/HTML-2171b5?style=for-the-badge&logo=heart&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/CSS-0077b6?style=for-the-badge&logo=education&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/JavaScript-1e90ff?style=for-the-badge&logo=robot&logoColor=white" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/React-4682b4?style=for-the-badge&logo=robot&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/PHP-0041c2?style=for-the-badge&logo=robot&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/Python-08306b?style=for-the-badge&logo=robot&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/SQL-123456?style=for-the-badge&logo=robot&logoColor=white" /></a>
