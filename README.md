@@ -29,6 +29,7 @@
   <a href="#"><img src="https://img.shields.io/badge/Founder of Studybliss-self made a website to share over 400 free resources for over 20 subjects and soft skills across 3 exam boards using HTML and CSS-79baec?style=for-the-badge&logo=heart&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/Plywood Inventory System-built a system to log transactions and backed up to a phpmyadmin database using HTML, CSS, JavaScript, PHP and SQL-79baec?style=for-the-badge&logo=education&logoColor=white" /></a>
   <a href="#"><img src="https://img.shields.io/badge/Cryptography Algorithm Visualizers-built an interactive website to visually guide you on how popular cryptography algorithms actually work to strengthen understanding-79baec?style=for-the-badge&logo=education&logoColor=white" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Web Development Associate in PERMIKATO-managing, maintaining and improving the PERMIKATO website to ease information sharing and media outreach-79baec?style=for-the-badge&logo=education&logoColor=white" /></a>
 </p>
 
 ### Let's Connect ‧₊˚ ⛲️ ‧₊𓏲 ๋࣭ ࣪ ˖🎐
