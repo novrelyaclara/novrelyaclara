@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novrelya Clara Sidik — Computer Science, AI &amp; EdTech</title>
+<meta name="description" content="Portfolio of Novrelya Clara Sidik, Computer Science student at the University of Toronto working on AI, machine learning and educational technology.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🪐</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#040a1f; --bg2:#08143a; --surface:#0b1a4a; --line:rgba(160,200,255,.16);
+  --text:#eaf3ff; --muted:#9fb4dc;
+  --cyan:#4fd8ff; --coral:#3d7bff; --gold:#9fd0ff; --lav:#7b8cff; --rose:#62b3ff; --emerald:#2ec4e6;
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);overflow-x:hidden}
+a{color:inherit}
+#space{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+main,header,footer{position:relative;z-index:1}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 4vw;background:linear-gradient(var(--bg),rgba(4,10,31,0))}
+.logo{font:700 18px var(--serif);text-decoration:none;letter-spacing:.02em}
+.logo span{color:var(--coral)}
+.links{display:flex;gap:6px;align-items:center}
+.links a{font:500 13px var(--mono);text-decoration:none;padding:7px 11px;border-radius:99px;color:var(--muted);transition:.2s}
+.links a:hover{color:var(--text);background:rgba(255,255,255,.07)}
+.links a.active{color:var(--bg);background:var(--cyan)}
+.links a.gh{border:1px solid var(--line);color:var(--text)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 12px;font:500 13px var(--mono);cursor:pointer}
+@media(max-width:900px){
+  .burger{display:block}
+  .links{position:fixed;top:58px;left:3vw;right:3vw;flex-direction:column;align-items:stretch;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:10px;display:none}
+  .links.open{display:flex}
+  .links a{padding:13px 14px;font-size:14px}
+}
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:90px 0 40px;pointer-events:none}
+.hero .wrap{display:grid;gap:22px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+h1{font:700 clamp(40px,7.4vw,96px)/.98 var(--serif);letter-spacing:-.025em;max-width:14ch}
+h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.hero p.lead{max-width:540px;color:var(--muted);font-size:clamp(15px,1.6vw,18px)}
+.hero p.lead b{color:var(--text);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:10px;pointer-events:auto}
+.btn{font:600 14px var(--sans);text-decoration:none;padding:13px 20px;border-radius:99px;border:1px solid var(--line);display:inline-flex;gap:8px;align-items:center;transition:.2s;cursor:pointer;background:rgba(4,10,31,.5);color:var(--text)}
+.btn:hover{transform:translateY(-2px);border-color:var(--text)}
+.btn.primary{background:var(--coral);border-color:var(--coral);color:#fff}
+.btn.primary:hover{background:#5b93ff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;pointer-events:auto}
+.chip{font:500 12px var(--mono);padding:7px 12px;border-radius:99px;border:1px solid;background:rgba(4,10,31,.55);cursor:pointer;color:var(--text);transition:.2s}
+.chip:hover{transform:scale(1.06)}
+.hint{font:400 12px var(--mono);color:var(--muted)}
+#tip{position:fixed;z-index:40;pointer-events:none;font:500 12px var(--mono);padding:6px 11px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);opacity:0;transform:translate(14px,14px);transition:opacity .15s;white-space:nowrap}
+/* sections */
+section.s{padding:110px 0;background:linear-gradient(rgba(4,10,31,.9),rgba(4,10,31,.9))}
+section.s:nth-of-type(even){background:linear-gradient(rgba(8,20,58,.92),rgba(8,20,58,.92))}
+.tag{font:700 clamp(36px,5.2vw,68px)/1.05 var(--serif);letter-spacing:-.02em;margin-bottom:40px;display:block}
+h2{font:700 clamp(30px,4.6vw,56px)/1.05 var(--serif);letter-spacing:-.02em;margin-bottom:38px;max-width:18ch}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+/* about */
+.about{display:grid;grid-template-columns:300px 1fr;gap:56px}
+.photo{aspect-ratio:4/5;border-radius:160px 160px 18px 18px;border:1px dashed var(--gold);display:grid;place-items:center;text-align:center;color:var(--gold);font:500 12px var(--mono);padding:24px;background:radial-gradient(circle at 50% 30%,rgba(79,216,255,.15),transparent 70%)}
+.photo{position:relative;overflow:hidden}.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo.has{border-style:solid}.photo.has span{display:none}
+.about p{color:var(--muted);margin-bottom:16px;max-width:62ch}
+.about p b{color:var(--text);font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:26px}
+.fact{border-left:2px solid var(--cyan);padding:2px 0 2px 14px}
+.fact small{display:block;font:400 11px var(--mono);color:var(--muted);text-transform:uppercase}
+@media(max-width:800px){.about{grid-template-columns:1fr;gap:30px}.photo{max-width:240px}}
+/* timeline */
+.tl{position:relative;border-left:1px solid var(--line);margin-left:8px}
+.tl .it{padding:0 0 34px 30px;position:relative}
+.tl .it::before{content:"";position:absolute;left:-6px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px rgba(4,10,31,1)}
+.it h3{font:700 22px var(--serif)}
+.it .meta{font:500 12px var(--mono);color:var(--c);margin:2px 0 6px}
+.it p{color:var(--muted);max-width:64ch}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
+@media(max-width:800px){.twocol{grid-template-columns:1fr}}
+/* cards */
+.xg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:20px}
+.xc{border:1px solid var(--line);border-top:3px solid var(--c);border-radius:18px;padding:24px;background:var(--surface);display:flex;flex-direction:column;gap:10px;transition:transform .25s}
+.xc:hover{transform:translateY(-4px)}
+.xc .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.xc h3{font:700 22px/1.15 var(--serif)}
+.xc .org{font-weight:500}
+.xc .when{font:400 12px var(--mono);color:var(--muted)}
+.xc ul{list-style:none;color:var(--muted);font-size:14.5px;display:grid;gap:8px}
+.xc li{padding-left:18px;position:relative}
+.xc li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--c)}
+.xc li b{color:var(--text);font-weight:500}
+.sub{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:46px 0 18px;display:flex;align-items:center;gap:14px}
+.sub::after{content:"";flex:1;height:1px;background:var(--line)}
+.cw{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.cw span{font:400 12px var(--mono);padding:4px 11px;border-radius:99px;border:1px solid var(--line)}
+.xc .ln{display:flex;gap:14px;flex-wrap:wrap;margin-top:auto;padding-top:4px}.xc .ln a{font:600 13px var(--sans);color:var(--c);text-decoration:none;border-bottom:1px solid currentColor}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.fb{font:500 13px var(--mono);padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.2s}
+.fb:hover{color:var(--text);border-color:var(--text)}
+.fb.on{background:var(--coral);border-color:var(--coral);color:#fff}
+.xc[hidden]{display:none}
+.xc .cl{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.cw.sm span{font-size:11px;padding:3px 10px;line-height:1.5}
+.sk .sm span{font-size:12px;padding:4px 11px;color:var(--muted)}
+.sk .full{grid-column:1/-1}
+/* projects */
+.pg{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.pc{grid-column:span 2;border:1px solid var(--line);border-top:3px solid var(--c);border-radius:20px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.pc:hover{transform:translateY(-5px);border-color:var(--c)}
+.pc.big{grid-column:span 4}
+.pc.mid{grid-column:span 3}
+.pb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pb h3{font:700 22px/1.15 var(--serif)}
+.role{font:500 11px var(--mono);color:var(--c);text-transform:uppercase;letter-spacing:.1em}
+.pb p{color:var(--muted);font-size:14.5px}
+.pb ul{list-style:none;font-size:13.5px;color:var(--muted)}
+.pb li::before{content:"✦ ";color:var(--c)}
+.tech{display:flex;flex-wrap:wrap;gap:6px}
+.tech span{font:400 11px var(--mono);padding:3px 9px;border-radius:99px;background:rgba(255,255,255,.07)}
+.pl{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-top:6px}
+.pl a{font:600 13px var(--sans);color:var(--c);text-decoration:none;border-bottom:1px solid currentColor}
+.pl em{font:400 12px var(--mono);color:var(--muted);font-style:normal}
+@media(max-width:900px){.pc,.pc.mid{grid-column:span 6}.pc.big{grid-column:span 6}}
+/* skills */
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px 40px}
+.sk h3{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--c);margin-bottom:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.sk div{display:flex;flex-wrap:wrap;gap:8px}
+.sk span{padding:6px 13px;border-radius:99px;border:1px solid var(--line);font-size:14px}
+/* achievements */
+.ach{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:22px}
+.ac{padding:26px 0;border-top:2px solid var(--c)}
+.ac b{display:block;font:700 clamp(28px,3vw,38px)/1.1 var(--serif);color:var(--c);overflow-wrap:anywhere}
+.ac p{color:var(--muted);margin-top:8px;font-size:15px}
+/* contact */
+.contact{text-align:left}
+.contact h2{max-width:14ch;font-size:clamp(40px,7vw,92px)}
+.contact h2 em{font-style:italic;color:var(--rose);font-weight:500}
+.clinks{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0}
+footer{padding:28px 0 40px;background:rgba(4,10,31,.95);font:400 12px var(--mono);color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#top{position:fixed;right:18px;bottom:18px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--bg2);color:var(--text);cursor:pointer;opacity:0;pointer-events:none;transition:.25s;font-size:18px}
+#top.show{opacity:1;pointer-events:auto}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--cyan);color:var(--bg);padding:10px 18px;border-radius:99px;font:600 13px var(--sans);opacity:0;transition:.25s;z-index:60}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+<div id="tip"></div>
+
+<nav>
+  <a class="logo" href="#top-of-page">Novrelya Clara Sidik</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="links">Menu</button>
+  <div class="links" id="links">
+    <a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+    <a class="gh" href="https://github.com/novrelyaclara" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </div>
+</nav>
+
+<header class="hero" id="top-of-page">
+  <div class="wrap">
+    <span class="eyebrow">Computer Science Specialist · University of Toronto</span>
+    <h1>Hi, I’m <em>Novrelya</em>. Welcome to my page.</h1>
+    <p class="lead">Computer Science student at the <b>University of Toronto</b> (Trinity College), working at the meeting point of <b>artificial intelligence</b>, <b>machine learning</b> and <b>educational technology</b>.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">Explore my work →</a>
+      <a class="btn" href="#about">About me</a>
+      <a class="btn" href="https://github.com/novrelyaclara" target="_blank" rel="noopener noreferrer">Visit my GitHub ↗</a>
+      <a class="btn" href="#contact">Contact me</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="s" id="about"><div class="wrap">
+  <span class="tag" style="color:var(--cyan)">01 · About</span>
+  <div class="about reveal">
+    <div class="photo"><img src="assets/profile.jpg" alt="Novrelya Clara Sidik" width="600" height="750" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><span>Profile photo placeholder<br>(add assets/profile.jpg)</span></div>
+    <div>
+      <p>I'm a <b>Computer Science Specialist at the University of Toronto</b> with a <b>Mathematics minor</b> and a focus in <b>AI</b>, and a <b>Garuda Full Ride Scholar</b>, one of 70 selected for Canada in 2026. I graduated as <b>valedictorian of BTB School</b> in Jakarta with <b>41/45 in the IB Diploma</b>.</p>
+      <p>I work on <b>AI and educational technology</b>. As a Software &amp; AI Engineer with Trustworthy Machine Intelligence, I build Socratic AI, an LLM tutor that guides students with hints and questions instead of final answers.</p>
+      <p>Away from code I chair the <b>UNESCO committee at NAMUN 2027</b>, taught <b>ABRSM music theory</b>, and founded <b>Studybliss</b>, leading a team of 14. Explaining clearly and leading people runs through all of it.</p>
+      <div class="facts">
+        <div class="fact"><small>Studying</small>CS Specialist · Math minor · AI focus</div>
+        <div class="fact" style="border-color:var(--coral)"><small>Focus</small>AI · ML · EdTech</div>
+        <div class="fact" style="border-color:var(--lav)"><small>Scholarship</small>Garuda Full Ride</div>
+        <div class="fact" style="border-color:var(--gold)"><small>Based in</small>Toronto, ON</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="s" id="education"><div class="wrap">
+  <span class="tag" style="color:var(--lav)">02 · Education</span>
+  <div class="xg reveal">
+    <article class="xc" style="--c:var(--cyan)"><span class="k">Present</span><h3>University of Toronto</h3><div class="org">Computer Science Specialist · Mathematics Minor · Focus in AI</div><div class="when">Sep. 2026 – Present · Toronto, Canada</div>
+      <ul><li><b>Garuda Full Ride Scholarship</b>, 1 of 70 selected for Canada, 2026</li></ul>
+      <div class="cl">Selected coursework</div><div class="cw sm"><span>CSC111H1 · Foundations of Computer Science II</span><span>CSC240H1 · Enriched Introduction to the Theory of Computation</span><span>MAT224H1 · Linear Algebra II</span></div></article>
+    <article class="xc" style="--c:var(--lav)"><span class="k">Secondary</span><h3>BTB School</h3><div class="org">Cambridge IGCSE and IB Diploma</div><div class="when">Jul. 2011 – Jun. 2026 · Jakarta, Indonesia</div>
+      <ul><li><b>Valedictorian</b></li><li><b>41/45</b> in the IB Diploma</li><li><b>6 A*s and 2 As</b> in IGCSE</li></ul><div class="cl">Higher level coursework</div><div class="cw sm"><span>Computer Science HL</span><span>Mathematics AA HL</span><span>Physics HL</span></div></article>
+  </div>
+</div></section>
+
+<section class="s" id="experience"><div class="wrap">
+  <span class="tag" style="color:var(--coral)">03 · Experience, Leadership &amp; Research</span>
+  <div class="filters" role="group" aria-label="Filter experience"><button class="fb on" data-f="all" aria-pressed="true">All</button><button class="fb" data-f="engineering" aria-pressed="false">Engineering</button><button class="fb" data-f="teaching" aria-pressed="false">Teaching</button><button class="fb" data-f="leadership" aria-pressed="false">Leadership</button><button class="fb" data-f="research" aria-pressed="false">Research</button></div>
+  <div class="xg reveal">
+    <article class="xc" data-cat="engineering" style="--c:var(--cyan)"><span class="k">Engineering</span><h3>Software &amp; AI Engineer</h3><div class="org">Trustworthy Machine Intelligence (TMI) – Socratic AI</div><div class="when">Oct. 2026 – Present · Toronto, Canada</div>
+      <ul><li>Build the full stack of an LLM tutor (<b>React, TypeScript, Python</b>) with <b>LangGraph</b> agents and <b>Deep Knowledge Tracing</b> that guides students with hints, not answers.</li>
+      <li>Build a <b>PDF and DOCX renderer</b> that turns explanations into downloadable study material.</li>
+      <li>Containerize with <b>Docker</b> and deploy the frontend on <b>Vercel</b>.</li></ul>
+      <div class="cw"><span>Python</span><span>TypeScript</span><span>React</span><span>LangGraph</span><span>ReportLab</span><span>Docker</span><span>Vercel</span></div>
+      <div class="ln"><a href="https://github.com/jakemaly/tutor" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></article>
+    <article class="xc" data-cat="engineering" style="--c:var(--coral)"><span class="k">Engineering</span><h3>Web Development Associate</h3><div class="org">PERMIKA Toronto</div><div class="when">Aug. 2026 – Present · Toronto, Canada</div>
+      <ul><li>Build responsive, reusable <b>React</b> components with JavaScript, HTML5 and CSS.</li><li>Design <b>accessible layouts</b> so members find events and information quickly.</li><li>Collaborate on GitHub and iterate on the UI from user feedback.</li></ul>
+      <div class="cw"><span>React</span><span>JavaScript</span><span>HTML5</span><span>CSS</span><span>Git</span></div>
+      <div class="ln"><a href="https://permikato.com/#home" target="_blank" rel="noopener noreferrer">Website ↗</a><a href="https://github.com/permikato/PermikatoWebReact" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></article>
+    <article class="xc" data-cat="engineering leadership" style="--c:var(--gold)"><span class="k">Founder</span><h3>Founder &amp; Full Stack Web Developer</h3><div class="org">Studybliss</div><div class="when">Jun. 2024 – May 2025 · Remote</div>
+      <ul><li>Founded and built an educational hub aggregating <b>400+ resources across 20+ subjects</b>, developing the full stack from front-end design to resource storage and retrieval.</li><li>Led a cross-functional team of <b>14</b> as President: 2 co-founders, 3 social media leads and 9 academic patrons.</li></ul>
+      <div class="cw"><span>HTML5</span><span>CSS</span><span>Git</span><span>GitHub</span></div><div class="ln"><a href="https://studybliss.github.io/studybliss-official/index.html" target="_blank" rel="noopener noreferrer">Website ↗</a></div></article>
+    <article class="xc" data-cat="teaching" style="--c:var(--lav)"><span class="k">Teaching</span><h3>Music Theory Teacher</h3><div class="org">Octava Music School</div><div class="when">Aug. 2025 – Aug. 2026 · Jakarta, Indonesia (Hybrid)</div>
+      <ul><li>Delivered <b>ABRSM</b> music theory lessons by breaking abstract concepts into clear steps, tracking student progress and updating parents regularly, with students earning <b>Distinction</b> results.</li></ul></article>
+    <article class="xc" data-cat="leadership" style="--c:var(--rose)"><span class="k">Leadership</span><h3>Chair, UNESCO Committee</h3><div class="org">North American Model United Nations (NAMUN) 2027</div><div class="when">Sep. 2026 – Present · Toronto, Canada</div>
+      <ul><li>Direct international delegates debating <b>AI, digital memory preservation and endangered languages</b>, authoring research briefs and guiding caucus resolution drafting.</li></ul></article>
+    <article class="xc" data-cat="leadership" style="--c:var(--emerald)"><span class="k">Leadership</span><h3>Vice President</h3><div class="org">High School Student Council</div><div class="when">Aug. 2024 – Aug. 2025 · Jakarta, Indonesia</div>
+      <ul><li>Led <b>6 fundraising events</b> that raised over <b>IDR 35 million</b> to rebuild a school in East Nusa Tenggara.</li></ul></article>
+    <article class="xc" data-cat="research" style="--c:var(--cyan)"><span class="k">Research · IB Diploma</span><h3>Computer Science HL IA</h3><div class="org">Plywood Inventory System</div><div class="when">BTB School · Jakarta, Indonesia</div>
+      <ul><li>Replaced a plywood company's paper records with a <b>web inventory system</b> (PHP, SQL, JavaScript) after client interviews.</li><li>Designed a <b>relational database</b> with role-based access, secure login, filtering and <b>Chart.js</b> dashboards.</li><li>Verified it against <b>32 tests</b> and a week-long client trial, meeting every success criterion.</li></ul>
+      <div class="cw"><span>PHP</span><span>SQL</span><span>JavaScript</span><span>Chart.js</span><span>phpMyAdmin</span><span>XAMPP</span></div><div class="ln"><a href="https://github.com/novrelyaclara/Plywood-Inventory-System" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></article>
+    <article class="xc" data-cat="research" style="--c:var(--lav)"><span class="k">Research · IB Diploma</span><h3>Mathematics AA HL IA</h3><div class="org">Modelling a Borobudur stupa in LEGO</div><div class="when">BTB School · Jakarta, Indonesia</div>
+      <ul><li>Counted <b>17,229 bricks</b> by applying <b>Gauss's Circle Problem</b> to each circular layer.</li><li>Fitted a piecewise profile with <b>Lagrange interpolation</b> and integrated <b>solids of revolution</b> for volume.</li><li>Reached <b>90.1% volumetric accuracy</b> and validated the build in Mecabricks.</li></ul>
+      <div class="cw"><span>Calculus</span><span>Lagrange interpolation</span><span>Desmos</span><span>Mecabricks</span></div></article>
+    <article class="xc" data-cat="research" style="--c:var(--coral)"><span class="k">Research · IB Diploma</span><h3>Physics HL IA</h3><div class="org">Copper's shear modulus with a torsional pendulum</div><div class="when">BTB School · Jakarta, Indonesia</div>
+      <ul><li>Determined <b>G = (45 ± 8) GPa</b>, <b>94% accurate</b> against the 48 GPa accepted value.</li><li>Designed the experiment, tracking oscillations with <b>60 fps video analysis</b> in LoggerPro and linearising T² against L.</li><li>Propagated uncertainty with max/min slope lines. Scored <b>23/24, the highest score</b>.</li></ul>
+      <div class="cw"><span>LoggerPro</span><span>Experimental design</span><span>Error analysis</span><span>Linear regression</span></div></article>
+  </div>
+</div></section>
+
+<section class="s" id="projects"><div class="wrap">
+  <span class="tag" style="color:var(--gold)">04 · Projects</span>
+  <div class="pg" id="pg"></div>
+  <p class="hint" style="margin-top:22px">More on <a href="https://github.com/novrelyaclara?tab=repositories" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">my GitHub repositories ↗</a></p>
+</div></section>
+
+<section class="s" id="skills"><div class="wrap">
+  <span class="tag" style="color:var(--emerald)">05 · Skills</span>
+  <div class="sk reveal" id="sk"></div>
+</div></section>
+
+<section class="s" id="achievements"><div class="wrap">
+  <span class="tag" style="color:var(--gold)">06 · Achievements</span>
+  <div class="ach reveal">
+    <div class="ac" style="--c:var(--cyan)"><b>1 of 70</b><p>Garuda Full Ride Scholarship recipients selected for Canada, 2026.</p></div>
+    <div class="ac" style="--c:var(--coral)"><b>41/45</b><p>IB Diploma score at BTB School.</p></div>
+    <div class="ac" style="--c:var(--lav)"><b>Valedictorian</b><p>BTB School, Class of 2026.</p></div>
+    <div class="ac" style="--c:var(--gold)"><b>6 A* + 2 A</b><p>Cambridge IGCSE results.</p></div>
+    <div class="ac" style="--c:var(--rose)"><b>400+</b><p>resources across 20+ subjects built with Studybliss.</p></div>
+    <div class="ac" style="--c:var(--emerald)"><b>14</b><p>people led as Studybliss President.</p></div>
+    <div class="ac" style="--c:var(--cyan)"><b>IDR 35M+</b><p>raised across 6 student council fundraisers to rebuild a school.</p></div>
+    <div class="ac" style="--c:var(--coral)"><b>Distinction</b><p>ABRSM results earned by my music theory students.</p></div>
+  </div>
+</div></section>
+
+<section class="s contact" id="contact"><div class="wrap">
+  <span class="tag" style="color:var(--rose)">07 · Contact</span>
+  <p class="reveal" style="color:var(--muted);max-width:52ch">Toronto, ON · Interested in AI, learning tools or a collaboration? I'd like to hear from you.</p>
+  <div class="clinks reveal" id="clinks"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Novrelya Clara Sidik</span><span>Made in Toronto · Source on <a href="https://github.com/novrelyaclara" target="_blank" rel="noopener noreferrer">GitHub</a></span></div></footer>
+<button id="top" aria-label="Back to top">↑</button>
+<div id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============ CONFIG — edit your content here ============ */
+const CONFIG = {
+  email: "novrelyaclara5353@gmail.com", // e.g. "you@example.com" — leave "" to hide the email button
+  github: "https://github.com/novrelyaclara",
+  linkedin: "https://www.linkedin.com/in/novrelya-clara",
+  instagram: "https://www.instagram.com/novrelyaclara",
+  tiktok: "https://www.tiktok.com/@novrelyaclara"
+};
+const PROJECTS = [
+  {n:"Socratic AI Tutor",big:1,c:"#4fd8ff",role:"AI / EdTech · TMI · Oct. 2026 – Present",d:"An LLM tutor that guides students with hints and questions instead of final answers.",f:["LangGraph agents with Deep Knowledge Tracing","Downloadable PDF and DOCX study material"],t:["Python","TypeScript","React","LangGraph","Docker","Vercel"],l:[["GitHub","https://github.com/jakemaly/tutor"]]},
+  {n:"Boo, Darling!",c:"#3d7bff",role:"Computer vision · Nov. 2026",d:"A hands-free computer vision pipeline, built in a 6-hour sprint, that scores Halloween costumes.",f:["MediaPipe pose landmarks and automated frame selection","0–100 Aura Score from FashionCLIP embeddings","ElevenLabs text-to-speech critique"],t:["Python","TypeScript","MediaPipe","FashionCLIP","ElevenLabs API","REST APIs"],l:[["Live site","https://boodarling.vercel.app/"],["GitHub","https://github.com/yukevindai/BooDarling"]]},
+  {n:"Studybliss",c:"#62b3ff",role:"Founder · Jun. 2024 – May 2025",d:"An educational hub with 400+ resources across 20+ subjects, built full stack from front-end design to resource storage and retrieval.",f:["Led a team of 14 as President"],t:["HTML5","CSS","Git","GitHub"],l:[["Website","https://studybliss.github.io/studybliss-official/index.html"],["GitHub (fork)","https://github.com/novrelyaclara/studybliss-official"],["Original repo","https://github.com/studybliss/studybliss-official"]]},
+  {n:"PERMIKATO Website",c:"#7b8cff",role:"Web Development Associate · Aug. 2026 – Present",d:"The PERMIKA Toronto community website, with accessible layouts so members find events and information quickly.",f:["Reusable React components","Iterates on the UI from user feedback"],t:["React","JavaScript","HTML5","CSS","Git"],l:[["Website","https://permikato.com/#home"],["GitHub","https://github.com/permikato/PermikatoWebReact"]]},
+  {n:"Plywood Inventory System",mid:1,c:"#5b8cff",role:"Full stack · Sep. 2025",d:"A full stack inventory app for logistics, purchases and authentication, with a SQL database and PHP backend, built through the full IBDP Computer Science HL lifecycle.",f:["SQL database design and PHP backend","Role-based access and transaction logging"],t:["JavaScript","PHP","SQL","MySQL","HTML5","CSS"],l:[["GitHub","https://github.com/novrelyaclara/Plywood-Inventory-System"]]},
+  {n:"Cryptography Algorithm Visualizers",mid:1,c:"#2ec4e6",role:"Developer",d:"An interactive education platform that visually shows how popular encryption and hashing algorithms work.",f:["Step-by-step algorithm visuals"],t:["JavaScript","HTML","CSS"],l:[["Live site","https://novrelyaclara.github.io/Cryptography-Algorithm-Visualizers/"],["GitHub","https://github.com/novrelyaclara/Cryptography-Algorithm-Visualizers"]]}
+];
+const SKILLS = [
+  ["Languages","var(--cyan)",["Python","SQL","JavaScript","TypeScript","PHP","HTML5","CSS"]],
+  ["AI & ML","var(--lav)",["LLMs","AI Agents (LangGraph)","Deep Knowledge Tracing","Embeddings (FashionCLIP)","Computer Vision (MediaPipe)"]],
+  ["Tools & platforms","var(--coral)",["React","Git","GitHub","Docker","Vercel","ReportLab","REST APIs","MySQL","phpMyAdmin","XAMPP","Chart.js","ElevenLabs API"]],
+  ["Software engineering","var(--rose)",["Relational database design","Role-based access control","Data validation","Full stack development"]],
+  ["Research & analysis","var(--emerald)",["Experimental design","Uncertainty & error analysis","Linear regression","Mathematical modelling","Lagrange interpolation","Solids of revolution","LoggerPro","Desmos"]],
+  ["University of Toronto coursework","var(--gold)",["CSC110Y1 · Foundations of Computer Science I","CSC111H1 · Foundations of Computer Science II","CSC240H1 · Enriched Introduction to the Theory of Computation","MAT148H1 · Calculus I with Proofs","MAT149H1 · Calculus II with Proofs","MAT223H1 · Linear Algebra I","MAT224H1 · Linear Algebra II","PHL100Y1 · Ancient Wisdom, Modern Insights: A Historical Introduction to Philosophy","HPS212H1 · Global Digital: Information, Computing, and Communication in the Modern World"],1],
+  ["High school coursework · IB Diploma","var(--lav)",["Computer Science HL","Mathematics AA HL","Physics HL"],1],
+  ["Leadership","var(--cyan)",["Team leadership","Teaching (ABRSM)","Model UN chairing","Research briefs"]]
+];
+const PLANETS = [
+  {id:"about",name:"About",tex:"ocean",col:"#4fd8ff",r:4.3,s:.55,sp:.5,atm:[.3,.8,1]},
+  {id:"education",name:"Education",tex:"ice",col:"#9fc0ff",r:6.4,s:.5,sp:.38,atm:[.6,.7,1]},
+  {id:"experience",name:"Experience",tex:"gas",col:"#3d7bff",r:8.8,s:1.0,sp:.28,atm:[.2,.5,1]},
+  {id:"projects",name:"Projects",tex:"saturn",col:"#8fc7ff",r:12,s:1.15,sp:.2,ring:1,atm:[.5,.8,1]},
+  {id:"skills",name:"Skills",tex:"rocky",col:"#2ec4e6",r:15,s:.6,sp:.14,atm:[.2,.7,1]},
+  {id:"contact",name:"Contact",tex:"rose",col:"#7b8cff",r:17.6,s:.75,sp:.1,ring:2,atm:[.4,.5,1]}
+];
+/* ============ DOM content ============ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$("#yr").textContent=new Date().getFullYear();
+$("#pg").innerHTML=PROJECTS.map(p=>`<article class="pc reveal ${p.big?"big":""} ${p.mid?"mid":""}" style="--c:${p.c}">
+ <div class="pb"><span class="role">${esc(p.role)}</span><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p>
+ <ul>${p.f.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+ <div class="tech">${p.t.map(x=>`<span>${esc(x)}</span>`).join("")}</div>
+ <div class="pl">${p.l.length?p.l.map(x=>`<a href="${x[1]}" target="_blank" rel="noopener noreferrer">${esc(x[0])} ↗</a>`).join(""):`<em>Repository not publicly available</em>`}</div></div></article>`).join("");
+$("#sk").innerHTML=SKILLS.map(k=>`<div class="${k[3]?"full":""}" style="display:block;--c:${k[1]}"><h3>${k[0]}</h3><div class="${k[3]?"sm":""}">${k[2].map(x=>`<span>${x}</span>`).join("")}</div></div>`).join("");
+$("#clinks").innerHTML=(CONFIG.email?`<button class="btn primary" id="copy">✉ ${esc(CONFIG.email)} · copy</button>`:"")+
+ `<a class="btn ${CONFIG.email?"":"primary"}" href="${CONFIG.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+  <a class="btn" href="${CONFIG.github}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  <a class="btn" href="${CONFIG.instagram}" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+  <a class="btn" href="${CONFIG.tiktok}" target="_blank" rel="noopener noreferrer">TikTok ↗</a>`;
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+const cp=$("#copy");if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText(CONFIG.email);toast("Email copied")}catch(e){toast("Copy failed — "+CONFIG.email)}};
+const go=id=>{document.getElementById(id).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})};
+$("#burger").onclick=()=>{const l=$("#links"),o=l.classList.toggle("open");$("#burger").setAttribute("aria-expanded",o)};
+$("#links").onclick=e=>{if(e.target.tagName==="A")$("#links").classList.remove("open")};
+$("#top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+document.querySelector(".filters").onclick=e=>{const b=e.target.closest(".fb");if(!b)return;const f=b.dataset.f;
+  document.querySelectorAll(".fb").forEach(x=>{const on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on)});
+  document.querySelectorAll("#experience .xc").forEach(c=>{c.hidden=!(f==="all"||c.dataset.cat.split(" ").includes(f))})};
+/* reveal + scrollspy */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll(".links a[href^='#']")];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section.s").forEach(s=>spy.observe(s));
+addEventListener("scroll",()=>$("#top").classList.toggle("show",scrollY>innerHeight*.8),{passive:true});
+
+/* ============ 3D solar system ============ */
+(function(){
+  const canvas=$("#space");
+  if(typeof THREE==="undefined"){canvas.style.display="none";return}
+  let renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,powerPreference:"high-performance"})}catch(e){canvas.style.background="radial-gradient(circle at 70% 30%,#0a2a7a,#040a1f)";return}
+  const small=innerWidth<700, reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  renderer.setPixelRatio(Math.min(devicePixelRatio,small?1.25:1.75));
+  renderer.setClearColor(0x040a1f);
+  const scene=new THREE.Scene(), cam=new THREE.PerspectiveCamera(48,1,.1,400);
+  let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const mk=(w,h)=>{const c=document.createElement("canvas");c.width=w;c.height=h;return[c,c.getContext("2d")]};
+  const rgba=(a,al)=>`rgba(${a[0]|0},${a[1]|0},${a[2]|0},${al})`;
+  function tex(kind){
+    const W=small?256:512,H=W/2,[c,x]=mk(W,H);
+    const bands=(cols,n,wob)=>{for(let y=0;y<H;y++){const t=y/H,i=Math.floor(((Math.sin(t*n)+Math.sin(t*n*2.3+1)*.5+1.5)/3)*cols.length)%cols.length;x.fillStyle=cols[i];x.fillRect(0,y,W,1)}
+      for(let i=0;i<260;i++){x.fillStyle=`rgba(255,255,255,${rnd()*.07})`;const y=rnd()*H;x.beginPath();x.ellipse(rnd()*W,y,rnd()*70+10,rnd()*3+1,0,0,7);x.fill()}};
+    const blobs=(fill,n,sz,al)=>{for(let i=0;i<n;i++){x.fillStyle=fill.replace("A",al*(.4+rnd()*.6));const px=rnd()*W,py=rnd()*H,r=rnd()*sz+sz/3;for(let k=-1;k<=1;k++){x.beginPath();x.ellipse(px+k*W,py,r*1.6,r,rnd(),0,7);x.fill()}}};
+    const craters=n=>{for(let i=0;i<n;i++){const px=rnd()*W,py=rnd()*H,r=rnd()*(W/28)+2;x.fillStyle="rgba(0,0,0,.22)";x.beginPath();x.arc(px,py,r,0,7);x.fill();x.strokeStyle="rgba(255,255,255,.2)";x.lineWidth=1.2;x.beginPath();x.arc(px-r*.15,py-r*.15,r,0,7);x.stroke()}};
+    if(kind==="ocean"){x.fillStyle="#0b3a9e";x.fillRect(0,0,W,H);blobs("rgba(90,200,255,A)",26,W/14,.95);blobs("rgba(190,225,255,A)",14,W/24,.9);blobs("rgba(255,255,255,A)",60,W/18,.35);x.fillStyle="rgba(240,250,255,.9)";x.fillRect(0,0,W,H/16);x.fillRect(0,H-H/16,W,H/16)}
+    else if(kind==="ice"){bands(["#cfe8ff","#7b9cff","#8fb4ff","#e6f2ff","#9fc0ff"],18);craters(26)}
+    else if(kind==="gas"){bands(["#1f6bff","#6fb0ff","#0f3fb3","#bfe0ff","#3a86ff","#0a2a80"],34);x.fillStyle="#0a2f9e";x.beginPath();x.ellipse(W*.6,H*.62,W/16,H/14,0,0,7);x.fill();x.strokeStyle="#bfe0ff";x.lineWidth=3;x.stroke()}
+    else if(kind==="saturn"){bands(["#8fc7ff","#d6ecff","#4a8fe0","#f0f8ff","#69aef5"],26)}
+    else if(kind==="rocky"){x.fillStyle="#12508f";x.fillRect(0,0,W,H);blobs("rgba(90,200,255,A)",30,W/12,.6);blobs("rgba(5,30,90,A)",30,W/16,.7);craters(60)}
+    else {bands(["#6aa8ff","#b5d3ff","#3d6fe0","#dcebff"],14);blobs("rgba(120,150,255,A)",14,W/18,.4)}
+    const t=new THREE.CanvasTexture(c);t.anisotropy=2;return t}
+  const atmMat=(c)=>new THREE.ShaderMaterial({transparent:true,side:THREE.BackSide,blending:THREE.AdditiveBlending,depthWrite:false,
+    uniforms:{c:{value:new THREE.Vector3(...c)}},
+    vertexShader:"varying vec3 n;varying vec3 v;void main(){n=normalize(normalMatrix*normal);vec4 p=modelViewMatrix*vec4(position,1.);v=normalize(-p.xyz);gl_Position=projectionMatrix*p;}",
+    fragmentShader:"uniform vec3 c;varying vec3 n;varying vec3 v;void main(){float i=pow(.72-dot(n,v)*-1.*-1.,3.);i=clamp(pow(1.-abs(dot(n,v)),2.4)*1.2,0.,1.);gl_FragColor=vec4(c,i);}"});
+  const glowTex=(col)=>{const[c,x]=mk(128,128),g=x.createRadialGradient(64,64,0,64,64,64);g.addColorStop(0,col+"cc");g.addColorStop(.4,col+"33");g.addColorStop(1,col+"00");x.fillStyle=g;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(c)};
+  /* sun */
+  const sunTex=(()=>{const[c,x]=mk(256,128);const g=x.createLinearGradient(0,0,0,128);g.addColorStop(0,"#cfeaff");g.addColorStop(.5,"#3b9bff");g.addColorStop(1,"#cfeaff");x.fillStyle=g;x.fillRect(0,0,256,128);for(let i=0;i<120;i++){x.fillStyle=`rgba(${150+rnd()*100|0},220,255,.18)`;x.beginPath();x.arc(rnd()*256,rnd()*128,rnd()*14+3,0,7);x.fill()}return new THREE.CanvasTexture(c)})();
+  const sun=new THREE.Mesh(new THREE.SphereGeometry(1.9,32,24),new THREE.MeshBasicMaterial({map:sunTex}));scene.add(sun);
+  const sg=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex("#4aa8ff"),blending:THREE.AdditiveBlending,depthWrite:false}));sg.scale.set(11,11,1);scene.add(sg);
+  scene.add(new THREE.PointLight(0xdfeeff,2.4,0,1.2),new THREE.AmbientLight(0x2a4a8a,.9));
+  /* planets */
+  const seg=small?28:48, pickables=[], orbits=[];
+  PLANETS.forEach((p,i)=>{
+    const piv=new THREE.Group(),grp=new THREE.Group();piv.rotation.y=i*1.1;grp.position.x=p.r;piv.add(grp);scene.add(piv);
+    const body=new THREE.Mesh(new THREE.SphereGeometry(p.s,seg,seg/2),new THREE.MeshStandardMaterial({map:tex(p.tex),roughness:.85,metalness:0}));
+    body.userData.p=p;grp.add(body);pickables.push(body);
+    grp.add(new THREE.Mesh(new THREE.SphereGeometry(p.s*1.14,24,16),atmMat(p.atm)));
+    if(p.tex==="ocean"){const cl=new THREE.Mesh(new THREE.SphereGeometry(p.s*1.02,seg,seg/2),new THREE.MeshStandardMaterial({map:tex("ice"),transparent:true,opacity:.28,depthWrite:false}));grp.add(cl);p.cloud=cl}
+    if(p.ring){
+      const inn=p.s*1.45,out=p.s*(p.ring===1?2.9:2.2),rg=new THREE.RingGeometry(inn,out,96,1),uv=rg.attributes.uv,pos=rg.attributes.position;
+      for(let k=0;k<pos.count;k++){const r=Math.hypot(pos.getX(k),pos.getY(k));uv.setXY(k,(r-inn)/(out-inn),.5)}
+      const[c,x]=mk(512,4),cols=p.ring===1?[[120,190,255],[220,238,255],[70,130,230],[60,110,255],[140,160,255]]:[[100,170,255],[200,225,255],[140,160,255]];
+      for(let k=0;k<512;k++){const t=k/512,gap=Math.sin(t*38)>.82||(t>.58&&t<.63),col=cols[Math.floor((Math.sin(t*23)*.5+.5)*cols.length)%cols.length];x.fillStyle=gap?"rgba(0,0,0,0)":rgba(col,.35+.55*Math.abs(Math.sin(t*61)));x.fillRect(k,0,1,4)}
+      const ring=new THREE.Mesh(rg,new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c),side:THREE.DoubleSide,transparent:true,depthWrite:false}));
+      ring.rotation.x=Math.PI/2-(p.ring===1?.42:.7);ring.rotation.y=.2;grp.add(ring)}
+    p.piv=piv;p.body=body;p.grp=grp;
+    const o=new THREE.Mesh(new THREE.RingGeometry(p.r-.02,p.r+.02,128),new THREE.MeshBasicMaterial({color:0xbfdcff,transparent:true,opacity:.08,side:THREE.DoubleSide}));o.rotation.x=Math.PI/2;scene.add(o);orbits.push(o);
+  });
+  /* stars, nebulae, dust */
+  function stars(n,size,spread){const g=new THREE.BufferGeometry(),a=new Float32Array(n*3),c=new Float32Array(n*3),pal=[[.9,.95,1],[.6,.85,1],[.5,.7,1],[.75,.8,1]];
+    for(let i=0;i<n;i++){const r=spread*(.6+rnd()*.4),th=rnd()*6.283,ph=Math.acos(2*rnd()-1);a.set([r*Math.sin(ph)*Math.cos(th),r*Math.cos(ph)*.8,r*Math.sin(ph)*Math.sin(th)],i*3);c.set(pal[i%4],i*3)}
+    g.setAttribute("position",new THREE.BufferAttribute(a,3));g.setAttribute("color",new THREE.BufferAttribute(c,3));
+    const m=new THREE.Points(g,new THREE.PointsMaterial({size,vertexColors:true,sizeAttenuation:false,transparent:true,opacity:.9,depthWrite:false}));scene.add(m);return m}
+  const st1=stars(small?500:1100,1.4,150),st2=stars(small?150:350,2.4,120),dust=stars(small?120:300,1,40);dust.material.opacity=.35;
+  [["#1f6bff",-60,10,-90,150],["#4fd8ff",70,-15,-110,170],["#7b9cff",0,40,-130,200],["#6aa8ff",-90,-30,-120,140]].forEach(n=>{
+    const s=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex(n[0]),blending:THREE.AdditiveBlending,depthWrite:false,opacity:.35,transparent:true}));s.position.set(n[1],n[2],n[3]);s.scale.set(n[4],n[4]*.7,1);scene.add(s)});
+  /* distant galaxies (tilted spiral sprites) */
+  const gx=(()=>{const[c,x]=mk(128,128);for(let i=0;i<500;i++){const t=i/500*14,r=t*4,a=t*1.2+(i%2)*3.14,px=64+Math.cos(a)*r*.9+(rnd()-.5)*6,py=64+Math.sin(a)*r*.35+(rnd()-.5)*4;x.fillStyle=`rgba(${170+rnd()*60|0},${210+rnd()*40|0},255,${.6-t/30})`;x.fillRect(px,py,1.5,1.5)}return new THREE.CanvasTexture(c)})();
+  [[40,22,-100,26],[-70,-22,-95,20]].forEach(g=>{const s=new THREE.Sprite(new THREE.SpriteMaterial({map:gx,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true}));s.position.set(g[0],g[1],g[2]);s.scale.set(g[3],g[3],1);s.material.rotation=g[0]*.02;scene.add(s)});
+  /* shooting star */
+  const sh=new THREE.Mesh(new THREE.PlaneGeometry(7,.07),new THREE.MeshBasicMaterial({color:0xdfeeff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(sh);let shT=-1,shNext=3;
+  /* camera + interaction */
+  let mx=0,my=0,tmx=0,tmy=0,hover=null,focus=null;const ray=new THREE.Raycaster(),mv=new THREE.Vector2(),tip=$("#tip");
+  function size(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+  addEventListener("resize",size);size();
+  addEventListener("pointermove",e=>{tmx=e.clientX/innerWidth-.5;tmy=e.clientY/innerHeight-.5;if(scrollY>innerHeight*.9||e.pointerType==="touch"){hover=null;tip.style.opacity=0;return}
+    mv.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);ray.setFromCamera(mv,cam);const h=ray.intersectObjects(pickables)[0];
+    hover=h?h.object.userData.p:null;document.body.style.cursor=hover?"pointer":"";
+    if(hover){tip.textContent="→ "+hover.name;tip.style.left=e.clientX+"px";tip.style.top=e.clientY+"px";tip.style.opacity=1;tip.style.borderColor=hover.col}else tip.style.opacity=0},{passive:true});
+  addEventListener("click",e=>{if(e.target.closest("a,button,nav,.chip")||scrollY>innerHeight*.9)return;
+    mv.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);ray.setFromCamera(mv,cam);const h=ray.intersectObjects(pickables)[0];
+    if(h){const p=h.object.userData.p;focus=p;setTimeout(()=>{focus=null;go(p.id)},650)}});
+  const chips=document.querySelectorAll(".chip");
+  chips.forEach(c=>{c.addEventListener("pointerenter",()=>hover=PLANETS.find(p=>p.id===c.dataset.id));c.addEventListener("pointerleave",()=>hover=null)});
+  /* loop */
+  let run=true,last=performance.now(),ang=0;
+  document.addEventListener("visibilitychange",()=>{run=!document.hidden;if(run){last=performance.now();loop()}});
+  const v3=new THREE.Vector3(),look=new THREE.Vector3(),tgt=new THREE.Vector3();
+  function loop(){
+    if(!run)return;requestAnimationFrame(loop);
+    const now=performance.now(),dt=Math.min((now-last)/1000,.05);last=now;
+    const sc=Math.min(scrollY/innerHeight,1.6),asp=innerWidth/innerHeight;
+    if(!reduce){ang+=dt;PLANETS.forEach(p=>{p.piv.rotation.y+=dt*p.sp*.35*(hover===p?.15:1);p.body.rotation.y+=dt*.35;if(p.cloud)p.cloud.rotation.y+=dt*.5});
+      st1.rotation.y+=dt*.002;st2.rotation.y+=dt*.004;dust.rotation.y-=dt*.006;sun.rotation.y+=dt*.1;
+      shNext-=dt;if(shNext<0&&shT<0){shT=0;shNext=5+rnd()*7;sh.position.set(-30+rnd()*30,15+rnd()*10,-40);sh.rotation.z=-.5}
+      if(shT>=0){shT+=dt*1.4;sh.position.x+=dt*70;sh.position.y-=dt*28;sh.material.opacity=Math.sin(Math.min(shT,1)*3.14)*.9;if(shT>1){shT=-1;sh.material.opacity=0}}}
+    mx+=(tmx-mx)*.05;my+=(tmy-my)*.05;
+    const dist=Math.min(Math.max(27/Math.min(asp,1.15),27),asp<.8?58:40);
+    let cx=mx*3,cy=13+sc*14-my*2,cz=dist+sc*20;
+    tgt.set(cx,cy,cz);look.set(0,-sc*3,0);
+    if(focus){focus.grp.getWorldPosition(v3);tgt.copy(v3).add(new THREE.Vector3(0,2,focus.s*6+3));look.copy(v3)}
+    cam.position.lerp(tgt,focus?.07:.06);cam.lookAt(look);
+    PLANETS.forEach(p=>{const t=hover===p?1.18:1,s=p.grp.scale.x+(t-p.grp.scale.x)*.12;p.grp.scale.setScalar(s)});
+    sg.material.opacity=1-Math.min(sc,1)*.5;
+    renderer.render(scene,cam)}
+  loop();
+})();
+</script>
+</body>
+</html>
