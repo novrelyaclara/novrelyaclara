@@ -1,1 +1,1 @@
- <p align="center"> <a href="https://novrelyaclara.vercel.app/"><img src="https://img.shields.io/badge/novrelyaclara.vercel.app-87cefa?style=for-the-badge&logo=vercel&logoColor=white" alt="Visit my website" /></a> </p>
+<h1 align="center">༘˚⋆𐙚❄️⋆𖦹.✧˚💎 Welcome to my page! I'm Novrelya! ༘˚⋆𐙚❄️⋆𖦹.✧˚💎</h1> <p align="center"> <a href="https://novrelyaclara.vercel.app/"><img src="https://img.shields.io/badge/novrelyaclara.vercel.app-87cefa?style=for-the-badge&logo=vercel&logoColor=white" alt="Visit my website" /></a> </p>
